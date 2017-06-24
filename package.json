@@ -1,0 +1,10 @@
+{
+  "name": "rent-mate-api-server",
+  "version": "0.1.0",
+  "description": "API server for RentMate",
+  "author": "bdzevel",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "rent-mate-data": "^0.1.0"
+  }
+}
