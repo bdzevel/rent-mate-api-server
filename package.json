@@ -5,6 +5,6 @@
   "author": "bdzevel",
   "dependencies": {
     "dotenv": "^4.0.0",
-    "rent-mate-data": "^0.1.0"
+    "rent-mate-data": "^0.1.1"
   }
 }
