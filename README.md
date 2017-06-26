@@ -1,3 +1,3 @@
-# RentMate Data
+# RentMate API Server
 
-Database access and models for RentMate
+API server for RentMate
