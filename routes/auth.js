@@ -1,7 +1,7 @@
 const passport = require('passport');
-const authenticationController = require('../controllers/authentication');
+const authController = require('../controllers/auth-controller');
 
 module.exports = function(app) {
-  app.post('/api/auth/register', authenticationController.register);
-  app.post('/api/auth/login', passport.authenticate('local'), authenticationController.login);
+  app.post('/auth/register', authController.register);
+  app.post('/auth/login', authController.login);
 };
