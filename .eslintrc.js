@@ -6,6 +6,9 @@ module.exports = {
     'func-names': 'off',
     'global-require': 'off',
     'no-underscore-dangle': 'off',
+    'guard-for-in': 'off',
+
+    'max-len': ["error", 160],
     'array-bracket-spacing': [ 'error', 'always' ],
 
     'no-restricted-syntax': [
@@ -13,5 +16,6 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
+     
   }
 };

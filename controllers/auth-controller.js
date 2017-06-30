@@ -4,6 +4,8 @@ const passport = require('passport');
 
 const userService = require('../services/user-service');
 
+const ROLES = require('../resources/authorization').ROLES;
+
 const User = global.models.users;
 
 const self = {
@@ -16,11 +18,11 @@ const self = {
       }
       return bcrypt.hash(password)
       .then(function(hash) {
-        const newUser = new User({ username, firstName, lastName, password: hash });
+        const newUser = new User({ username, firstName, lastName, password: hash, roles: [ ROLES.USER ] });
         return userService.saveUser(newUser)
         .then(function() {
           return res.status(200).end();
-        })
+        });
       })
       .catch(function(err) {
         winston.error('Error! ', err);

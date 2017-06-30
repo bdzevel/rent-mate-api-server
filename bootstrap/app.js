@@ -8,10 +8,5 @@ dotenv.config();
 winston.level = process.env.TRACE_LEVEL || 'info';
 
 db.connect()
-.then(function() {
-  const app = require('./web-server');
-  const auth = require('./authentication');
-  auth.initialize(app);
-  app.listen(process.env.PORT || 3000);
-})
+.then(() => require('./web-server'))
 .catch(err => winston.error(' >> ERR! ', err));
