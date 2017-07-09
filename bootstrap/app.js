@@ -8,5 +8,5 @@ dotenv.config();
 winston.level = process.env.TRACE_LEVEL || 'info';
 
 db.connect()
-.then(() => require('./web-server'))
-.catch(err => winston.error(' >> ERR! ', err));
+  .then(() => require('./web-server'))
+  .catch(err => winston.error(' >> ERR! ', err));

@@ -5,12 +5,12 @@ module.exports = function(grunt) {
       options: {
         config: '.eslintrc.js',
       },
-      src: [ '**/*.js' ],
+      src: [ '.' ],
     },
   });
 
   grunt.loadNpmTasks('gruntify-eslint');
 
+  grunt.registerTask('test', [ 'eslint' ]);
   grunt.registerTask('default', [ 'eslint' ]);
-  grunt.registerTask('build', [ 'eslint' ]);
 };

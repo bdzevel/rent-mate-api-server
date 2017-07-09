@@ -11,21 +11,21 @@ function configurePassport() {
 
   passport.deserializeUser(function(id, done) {
     User.findById(id).lean()
-    .then(user => done(null, user));
+      .then(user => done(null, user));
   });
 
   passport.use(new LocalStrategy(function(username, password, done) {
     return User.findOne({ username }).lean()
-    .then(function(user) {
-      return bcrypt.compare(password, user.password)
-      .then(function(isEqual) {
-        if (!isEqual) {
-          done(null, false);
-          return;
-        }
-        done(null, user);
+      .then(function(user) {
+        return bcrypt.compare(password, user.password)
+          .then(function(isEqual) {
+            if (!isEqual) {
+              done(null, false);
+              return;
+            }
+            done(null, user);
+          });
       });
-    });
   }));
 }
 

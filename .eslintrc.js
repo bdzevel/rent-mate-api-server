@@ -1,6 +1,6 @@
 module.exports = {
-  'extends': 'airbnb-base',
-  'rules': {
+  extends: 'airbnb-base',
+  rules: {
     'prefer-arrow-callback': 'off',
     'space-before-function-paren': 'off',
     'func-names': 'off',
@@ -15,7 +15,9 @@ module.exports = {
       'error',
       'LabeledStatement',
       'WithStatement',
-    ],
-     
+    ], 
+  },
+  env: {
+    node: true,
   }
 };

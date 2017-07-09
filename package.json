@@ -4,6 +4,9 @@
   "description": "API server for RentMate",
   "author": "bdzevel",
   "scripts": {
+    "precommit": "npm test",
+    "prepush": "npm test",
+    "test": "./node_modules/.bin/grunt test",
     "start": "node --use-strict ./bootstrap/app"
   },
   "dependencies": {
