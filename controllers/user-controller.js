@@ -1,11 +1,9 @@
+const userService = require('../services/user-service');
+
 const self = {
   getCurrentUser(req, res) {
-    const outputFields = [ 'username', 'firstName', 'lastName' ];
-    const user = outputFields.reduce(function(acc, curr) {
-      acc[curr] = req.user[curr];
-      return acc;
-    }, { });
-    res.status(200).json(user);
+    const profile = userService.getUserProfile(req.user);
+    res.status(200).json(profile);
   },
 };
 

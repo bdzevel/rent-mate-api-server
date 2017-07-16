@@ -20,9 +20,8 @@ const self = {
           .then(function(hash) {
             const newUser = new User({ username, firstName, lastName, password: hash, roles: [ ROLES.USER ] });
             return userService.saveUser(newUser)
-              .then(function() {
-                return res.status(200).end();
-              });
+              .then(usr => userService.getUserProfile(usr))
+              .then(profile => res.status(200).json(profile));
           })
           .catch(function(err) {
             winston.error('Error! ', err);
@@ -36,8 +35,14 @@ const self = {
       if (!user) {
         return res.status(403).end();
       }
-      return res.status(200).end();
+      const profile = userService.getUserProfile(user);
+      return res.status(200).json(profile);
     })(req, res);
+  },
+
+  logout(req, res) {
+    req.logout();
+    return res.status(200).end();
   },
 };
 
