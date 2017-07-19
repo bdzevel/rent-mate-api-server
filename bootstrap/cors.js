@@ -6,6 +6,8 @@ const allowedOrigins = [
 ];
 
 const config = {
+  credentials: true,
+
   origin(reqOrigin, callback) {
     if (allowedOrigins.some(o => o === reqOrigin)) {
       return callback(null, true);

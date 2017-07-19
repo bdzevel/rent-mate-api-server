@@ -20,8 +20,8 @@ const auth = {
         for (const role in ACTIONS_PER_ROLE) {
           for (const action of ACTIONS_PER_ROLE[role]) {
             activities.can(action, function(identity, params, cb) {
-              if (!identity.user || identity.user.roles.any(r => r === role)) {
-                return cb('Unauthorized');
+              if (!identity.user || !identity.user.roles.some(r => r === role)) {
+                return cb(null, false);
               }
               return cb(null, true);
             });
