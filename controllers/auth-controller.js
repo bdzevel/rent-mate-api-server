@@ -10,7 +10,8 @@ const User = global.models.user;
 
 const self = {
   register(req, res) {
-    const { username, password, firstName, lastName } = req.body;
+    const username = req.body.username.toLowerCase();
+    const { password, firstName, lastName } = req.body;
     User.findOne({ username })
       .then(function(user) {
         if (user) {
@@ -20,7 +21,7 @@ const self = {
           .then(function(hash) {
             const newUser = new User({ username, firstName, lastName, password: hash, roles: [ ROLES.USER ] });
             return userService.saveUser(newUser)
-              .then(() => this.login(req, res));
+              .then(() => self.login(req, res));
           })
           .catch(function(err) {
             winston.error('Error! ', err);
