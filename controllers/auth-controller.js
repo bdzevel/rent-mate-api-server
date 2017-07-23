@@ -32,8 +32,7 @@ const self = {
     passport.authenticate('local')(req, res, function() {
       const profile = userService.getUserProfile(req.user);
       return res.status(200).json(profile);
-    })
-      .catch(errorController.handleError.bind(this, req, res));
+    });
   },
 
   logout(req, res) {
@@ -42,7 +41,7 @@ const self = {
   },
 
   canPerformAction(action, req, res) {
-    // Super ghetto IMO to use req/res in service
+    // Super ghetto IMO
     return new Promise(function(resolve) {
       mustbe.authorized(action, () => resolve(false))(req, res, () => resolve(true));
     });

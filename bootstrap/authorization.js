@@ -16,16 +16,16 @@ const auth = {
       });
 
       config.activities(function(activities) {
+        const ACTIONS = CONSTANTS.ACTIONS;
         const ACTIONS_PER_ROLE = CONSTANTS.ACTIONS_PER_ROLE;
-        for (const role in ACTIONS_PER_ROLE) {
-          for (const action of ACTIONS_PER_ROLE[role]) {
-            activities.can(action, function(identity, params, cb) {
-              if (!identity.user || !identity.user.roles.some(r => r === role)) {
-                return cb(null, false);
-              }
-              return cb(null, true);
-            });
-          }
+        for (const key in ACTIONS) {
+          const action = ACTIONS[key];
+          activities.can(action, function(identity, params, cb) {
+            if (!identity.user || !identity.user.roles.some(r => ACTIONS_PER_ROLE[r].some(a => a === action))) {
+              return cb(null, false);
+            }
+            return cb(null, true);
+          });
         }
       });
     });
