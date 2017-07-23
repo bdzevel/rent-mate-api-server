@@ -9,4 +9,7 @@ winston.level = process.env.TRACE_LEVEL || 'info';
 
 db.connect()
   .then(() => require('./web-server'))
-  .catch(err => winston.error(' >> ERR! ', err));
+  .catch(function(err) {
+    winston.error(' >> ERR! ', err.message, err.stack);
+    process.exit(-1);
+  });

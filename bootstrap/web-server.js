@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const winston = require('winston');
 
 const authentication = require('./authentication');
 const authorization = require('./authorization');
@@ -24,6 +25,9 @@ cors.initialize(app);
 authentication.initialize(app);
 authorization.initialize();
 routes(app);
-app.listen(process.env.PORT || 3000);
+
+const port = process.env.PORT || 3000;
+app.listen(port);
+winston.info(`Finished bootstrapping. Listening on ${port}.`);
 
 module.exports = app;

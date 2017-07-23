@@ -1,5 +1,6 @@
-const bcrypt = require('bcrypt');
 const passport = require('passport');
+
+const authService = require('../services/auth-service');
 
 const User = global.models.user;
 const LocalStrategy = require('passport-local').Strategy;
@@ -15,19 +16,12 @@ function configurePassport() {
   });
 
   passport.use(new LocalStrategy(function(username, password, done) {
-    return User.findOne({ username: username.toLowerCase() }).lean()
+    authService.login(username, password)
       .then(function(user) {
         if (!user) {
           return done(null, false);
         }
-        return bcrypt.compare(password, user.password)
-          .then(function(isEqual) {
-            if (!isEqual) {
-              done(null, false);
-              return;
-            }
-            done(null, user);
-          });
+        return done(null, user);
       });
   }));
 }
