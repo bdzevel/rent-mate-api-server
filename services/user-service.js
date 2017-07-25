@@ -15,7 +15,7 @@ const self = {
     return profile;
   },
 
-  updateUser(id, options) {
+  update(id, options) {
     const validFields = [ 'firstName', 'lastName' ];
     const properties = _.pick(options, validFields);
     const passHashTask = options.password ? authService.hashPassword(options.password) : Promise.resolve();

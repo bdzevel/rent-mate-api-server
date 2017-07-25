@@ -12,12 +12,12 @@ const self = {
     return query;
   },
 
-  createListing(options) {
+  create(options) {
     const listing = new Listing(options);
     return this.save(listing);
   },
 
-  updateListing(id, options) {
+  update(id, options) {
     const validFields = [ 'broken' ];
     const properties = _.pick(options, validFields);
     return Listing.findById(id)
