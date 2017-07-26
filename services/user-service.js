@@ -9,7 +9,7 @@ const self = {
     if (!user) {
       return { isAuthenticated: false };
     }
-    const outputFields = [ 'username', 'firstName', 'lastName' ];
+    const outputFields = [ 'username', 'firstName', 'lastName', 'roles' ];
     const profile = _.pick(user, outputFields);
     profile.isAuthenticated = true;
     return profile;

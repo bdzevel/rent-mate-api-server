@@ -19,7 +19,7 @@
     "mustbe": "^0.4.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "rent-mate-data": "0.4.0",
+    "rent-mate-data": "0.5.0",
     "winston": "^2.3.1"
   },
   "devDependencies": {
