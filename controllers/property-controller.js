@@ -22,7 +22,7 @@ const self = {
 
   createProperty(req, res) {
     const property = req.body;
-    let authorizationCheckTask = Promise.resolve();
+    let authorizationCheckTask = Promise.resolve(true);
     if (!property.owner) {
       property.owner = req.user._id;
     } else if (property.owner !== req.user._id.toString()) {
