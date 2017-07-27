@@ -20,8 +20,8 @@ function mergeRoles(user, roles) {
   }
   const newRoles = user.roles;
   for (const role in roles) {
-    if (roles[role]) {
-      const index = newRoles.findIndex(role);
+    if (!roles[role]) {
+      const index = newRoles.findIndex(r => r === role);
       if (index !== -1) {
         newRoles.splice(index, 1);
       }
