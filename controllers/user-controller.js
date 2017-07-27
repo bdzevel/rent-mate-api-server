@@ -9,13 +9,13 @@ const self = {
 
   updateOwnProfile(req, res) {
     userService.update(req.user._id, req.body)
-      .then(() => res.status(200).end())
+      .then(() => res.status(200).send({ status: 'ok' }))
       .catch(errorController.handleError.bind(this, req, res));
   },
 
   toggleRoles(req, res) {
     userService.toggleRoles(req.user._id, req.body)
-      .then(() => res.status(200).end())
+      .then(() => res.status(200).send({ status: 'ok' }))
       .catch(errorController.handleError.bind(this, req, res));
   },
 };

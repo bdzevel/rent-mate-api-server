@@ -24,7 +24,7 @@ const self = {
           return;
         }
         listingService.update(req.params.id, req.body)
-          .then(() => res.status(200).end());
+          .then(() => res.status(200).send({ status: 'ok' }));
       })
       .catch(errorController.handleError.bind(this, req, res));
   },

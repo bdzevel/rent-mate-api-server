@@ -57,7 +57,7 @@ const self = {
           return null;
         }
         return propertyService.update(property, req.body)
-          .then(() => res.status(200).end());
+          .then(() => res.status(200).send({ status: 'ok' }));
       })
       .catch(errorController.handleError.bind(this, req, res));
   },

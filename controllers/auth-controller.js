@@ -37,7 +37,7 @@ const self = {
 
   logout(req, res) {
     req.logout();
-    return res.status(200).end();
+    return res.status(200).send({ status: 'ok' });
   },
 
   canPerformAction(action, req, res) {
