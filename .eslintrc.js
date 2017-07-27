@@ -7,6 +7,7 @@ module.exports = {
     'global-require': 'off',
     'no-underscore-dangle': 'off',
     'guard-for-in': 'off',
+    'no-param-reassign': 'off',
 
     'max-len': ["error", 160],
     'array-bracket-spacing': [ 'error', 'always' ],

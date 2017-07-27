@@ -12,6 +12,12 @@ const self = {
       .then(() => res.status(200).end())
       .catch(errorController.handleError.bind(this, req, res));
   },
+
+  toggleRoles(req, res) {
+    userService.toggleRoles(req.user._id, req.body)
+      .then(() => res.status(200).end())
+      .catch(errorController.handleError.bind(this, req, res));
+  },
 };
 
 module.exports = self;

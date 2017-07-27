@@ -9,6 +9,7 @@ const ACTIONS = require('../resources/authorization').ACTIONS;
 module.exports = function(app) {
   app.get('/api/user', mustbe.authorized(ACTIONS.READ_OWN_PROFILE), userController.getCurrentUser);
   app.put('/api/user', mustbe.authorized(ACTIONS.WRITE_OWN_PROFILE), userController.updateOwnProfile);
+  app.post('/api/user/toggleRoles', mustbe.authorized(ACTIONS.WRITE_OWN_PROFILE), userController.toggleRoles);
 
   app.get('/api/listings', mustbe.authorized(ACTIONS.READ_ANY_LISTING), listingController.searchListings);
   app.post('/api/listings', mustbe.authorized(ACTIONS.WRITE_OWN_LISTING), listingController.createListing);
