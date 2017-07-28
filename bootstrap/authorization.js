@@ -11,7 +11,11 @@ const auth = {
         });
 
         rh.notAuthorized(function(req, res) {
-          res.status(403).end();
+          let output = { status: 'unauthorized' };
+          if (!req.user) {
+            output = { status: 'unauthenticated' };
+          }
+          res.status(403).send(output);
         });
       });
 

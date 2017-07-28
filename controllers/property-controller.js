@@ -9,14 +9,14 @@ const ACTIONS = require('../resources/authorization').ACTIONS;
 const self = {
   searchOwnProperties(req, res) {
     const userId = req.user._id;
-    propertyService.search({ _id: userId })
-      .then(properties => res.status(200).json(properties.toObject()))
+    propertyService.search({ owner: userId })
+      .then(properties => res.status(200).json(properties))
       .catch(errorController.handleError.bind(this, req, res));
   },
 
   searchProperties(req, res) {
     propertyService.search({ })
-      .then(properties => res.status(200).json(properties.toObject()))
+      .then(properties => res.status(200).json(properties))
       .catch(errorController.handleError.bind(this, req, res));
   },
 
