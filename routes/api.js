@@ -19,4 +19,8 @@ module.exports = function(app) {
   app.get('/api/properties/all', mustbe.authorized(ACTIONS.READ_ANY_PROPERTY), propertyController.searchProperties);
   app.post('/api/properties', mustbe.authorized(ACTIONS.WRITE_OWN_PROPERTY), propertyController.createProperty);
   app.put('/api/properties/:id', mustbe.authorized(ACTIONS.WRITE_OWN_PROPERTY), propertyController.updateProperty);
+
+  app.put('/api/properties/:propId/pictures', mustbe.authorized(ACTIONS.WRITE_OWN_PROPERTY),
+    propertyController.upload, propertyController.handleUploadedPictures);
+  app.delete('/api/properties/:propId/pictures/:picId', mustbe.authorized(ACTIONS.WRITE_OWN_PROPERTY), propertyController.deletePicture);
 };

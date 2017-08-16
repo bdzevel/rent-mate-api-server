@@ -5,7 +5,7 @@ const winston = require('winston');
 
 const authentication = require('./authentication');
 const authorization = require('./authorization');
-const routes = require('../routes/index');
+const routes = require('../routes');
 const cors = require('./cors');
 
 const app = express();

@@ -18,10 +18,21 @@ const self = {
   },
 
   update(property, options) {
-    const validFields = [ 'description', 'address', 'avatarUrl' ];
+    const validFields = [ 'description', 'address', 'avatarUrl', 'pictureUrls' ];
     const props = _.pick(options, validFields);
     Object.assign(property, props);
     return this.save(property);
+  },
+
+  addPicturesToProperty(property, urls) {
+    const options = { pictureUrls: urls };
+    if (property.pictureUrls) {
+      options.pictureUrls.push(...property.pictureUrls);
+    }
+    if (!property.avatarUrl) {
+      options.avatarUrl = options.pictureUrls[0];
+    }
+    return this.update(property, options);
   },
 
   removePictureFromProperty(picture) {
