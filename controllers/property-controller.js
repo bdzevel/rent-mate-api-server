@@ -21,7 +21,7 @@ function findPropertyIfAuthorized(userId, propertyId, req, res) {
   return Property.findById(propertyId)
     .then(function(property) {
       // Check if user can perform this action
-      if (property.owner !== userId) {
+      if (!property.owner.equals(userId)) {
         return authController.canPerformAction(ACTIONS.WRITE_ANY_PROPERTY, req, res)
           .then(isAuthorized => ({ property, isAuthorized }));
       }
